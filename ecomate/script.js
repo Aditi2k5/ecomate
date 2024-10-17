@@ -36,6 +36,7 @@ function displayData() {
     }
 
     consumptionData.forEach((data, index) => {
+        const formattedMonth = new Date(data.month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
         let waterDifference = 0;
         let electricityDifference = 0;
 
@@ -47,7 +48,7 @@ function displayData() {
 
         display.innerHTML += `
             <div>
-                <h3>Month: ${data.month}</h3>
+                <h3>Month: ${formattedMonth}</h3>
                 <p>Water Consumption: ${data.waterConsumption} liters</p>
                 <p>Electricity Consumption: ${data.electricityConsumption} kWh</p>
                 ${index > 0 ? `
@@ -78,16 +79,16 @@ function suggestChanges(waterDifference, electricityDifference) {
 // Update the graph using Chart.js
 function updateChart() {
     const consumptionData = JSON.parse(localStorage.getItem('consumptionData')) || [];
-    
+
     // Only take the last 6 months of data
     const recentData = consumptionData.slice(-6);
 
-    const labels = recentData.map(data => data.month);
+    const labels = recentData.map(data => new Date(data.month).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
     const waterData = recentData.map(data => data.waterConsumption);
     const electricityData = recentData.map(data => data.electricityConsumption);
 
     const ctx = document.getElementById('consumptionChart').getContext('2d');
-    
+
     // Create a new chart or update an existing one
     if (window.myChart) {
         window.myChart.destroy(); // Destroy the old chart instance to prevent duplicates
@@ -114,8 +115,23 @@ function updateChart() {
         },
         options: {
             scales: {
+                x: {
+                    type: 'category',
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 6 // Adjust the maximum number of ticks displayed
+                    }
+                },
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Consumption'
+                    }
                 }
             }
         }
@@ -146,8 +162,6 @@ function analyzeConsumption(waterData, electricityData) {
     } else {
         analysis += `Your average electricity consumption is within the optimal level.<br>`;
     }
-
-    document.getElementById('display').innerHTML += `<h3>Consumption Analysis</h3><p>${analysis}</p>`;
 }
 
 // Initial display and chart when the page loads
