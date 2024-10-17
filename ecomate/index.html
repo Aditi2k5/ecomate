@@ -8,25 +8,38 @@
 </head>
 <body>
 
-    <h1>Ecomate - Track Your Consumption</h1>
-    <form id="consumption-form">
-        <label for="month">Month:</label>
-        <input type="month" id="month" name="month" required>
+    <!-- Navbar -->
+    <nav>
+        <h1>Ecomate</h1>
+        <h2>Your eco-friend to help you be more eco-friendly</h2>
+    </nav>
 
-        <label for="water-consumption">Water Consumption (liters):</label>
-        <input type="number" id="water-consumption" name="water-consumption" required>
+    <!-- Main Content -->
+    <div class="container">
+        <form id="consumption-form">
+            <label for="month">Month:</label>
+            <input type="month" id="month" name="month" required>
 
-        <label for="electricity-consumption">Electricity Consumption (kWh):</label>
-        <input type="number" id="electricity-consumption" name="electricity-consumption" required>
+            <label for="water-consumption">Water Consumption (liters):</label>
+            <input type="number" id="water-consumption" name="water-consumption" required>
 
-        <button type="submit">Submit</button>
-    </form>
+            <label for="electricity-consumption">Electricity Consumption (kWh):</label>
+            <input type="number" id="electricity-consumption" name="electricity-consumption" required>
 
-    <div id="graph-container">
-        <canvas id="consumptionChart"></canvas>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="graph-container">
+            <canvas id="consumptionChart"></canvas>
+        </div>
+
+        <div id="display"></div>
     </div>
 
-    <div id="display"></div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ecomate. All rights reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>

@@ -1,17 +1,46 @@
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #f4f4f9;
+    background-color: #9cffeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
+/* Navbar styles */
+nav {
+    background-color: #000000;
+    padding: 5px 0;
+    width: auto;
+    text-align: center;
+}
+
+nav h1 {
+    color: white;
+    font-size: 2em;
+    font-family: 'Georgia', serif; /* Different font for the header */
+}
+nav h2{
+    color: white;
+    font-size: 1em;
+    font-family: 'Georgia', serif;
+}
+/* Container for form and graph */
+.container {
+    flex: 1; /* Ensures that content takes up remaining space */
+}
+
+/* Form styling */
 form {
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffffa9;
+    box-shadow: 0 0 10px rgb(0, 102, 82);
     border-radius: 10px;
 }
 
@@ -21,7 +50,7 @@ label, input, button {
 
 button {
     padding: 10px;
-    background-color: #28a745;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -32,6 +61,7 @@ button:hover {
     background-color: #218838;
 }
 
+/* Graph and display styles */
 #display, #graph-container {
     max-width: 600px;
     margin: 20px auto;
@@ -43,4 +73,16 @@ button:hover {
 
 canvas {
     max-width: 100%;
+}
+
+/* Footer styling */
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
