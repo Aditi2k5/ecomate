@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomate - Track Your Consumption</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Ecomate - Track Your Consumption</h1>
+    <form id="consumption-form">
+        <label for="month">Month:</label>
+        <input type="month" id="month" name="month" required>
+
+        <label for="water-consumption">Water Consumption (liters):</label>
+        <input type="number" id="water-consumption" name="water-consumption" required>
+
+        <label for="electricity-consumption">Electricity Consumption (kWh):</label>
+        <input type="number" id="electricity-consumption" name="electricity-consumption" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="graph-container">
+        <canvas id="consumptionChart"></canvas>
+    </div>
+
+    <div id="display"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
