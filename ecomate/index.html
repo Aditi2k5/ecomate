@@ -3,45 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecomate - Track Your Consumption</title>
+    <title>Ecomate Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
         <h1>Ecomate</h1>
-        <h2>Your eco-friend  to help you be more eco-friendly</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#add-data">Add Data</a></li>
+            <li><a href="#graph">View Graph</a></li>
+        </ul>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <form id="consumption-form">
-            <label for="month">Month:</label>
-            <input type="month" id="month" name="month" required>
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Section to add consumption data -->
+        <section id="add-data">
+            <h2>Add Monthly Consumption Data</h2>
+            <form id="dataForm">
+                <label for="month">Month:</label>
+                <input type="month" id="month" required>
+                <label for="waterConsumption">Water Consumption (liters):</label>
+                <input type="number" id="waterConsumption" required>
+                <label for="electricityConsumption">Electricity Consumption (kWh):</label>
+                <input type="number" id="electricityConsumption" required>
+                <button type="submit" class="submit-btn">Add Data</button>
+            </form>
+        </section>
 
-            <label for="water-consumption">Water Consumption (liters):</label>
-            <input type="number" id="water-consumption" name="water-consumption" required>
-
-            <label for="electricity-consumption">Electricity Consumption (kWh):</label>
-            <input type="number" id="electricity-consumption" name="electricity-consumption" required>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="graph-container">
+        <!-- Section to display the graph -->
+        <section id="graph">
+            <h2>Consumption Graph</h2>
             <canvas id="consumptionChart"></canvas>
-        </div>
+        </section>
 
-        <div id="display"></div>
+        <!-- Section to display the consumption data -->
+        <section id="summary">
+            <h2>Consumption Summary</h2>
+            <div id="display"></div>
+        </section>
+
+        <!-- Clear Data Button -->
+        <section id="clear-data">
+            <button onclick="clearData()" class="clear-btn">Clear All Data</button>
+        </section>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Ecomate. All rights reserved.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

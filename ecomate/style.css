@@ -1,90 +1,187 @@
-/* General body styles */
+/* General styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #9cffeb;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9f5e9; /* Light green background */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+    align-items: center;
+    animation: fadeIn 2s ease-in-out;
 }
 
-/* Navbar styles */
-nav {
-    background-color: #000000;
-    padding: 5px 0;
-    width: auto;
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    background-color: #2d6a4f;
+    color: white;
+    padding: 5px 20px;
     text-align: center;
-}
-
-nav h1 {
-    color: white;
-    font-size: 2em;
-    font-family: 'Georgia', serif; /* Different font for the header */
-}
-nav h2{
-    color: white;
-    font-size: 1em;
-    font-family: 'Georgia', serif;
-}
-/* Container for form and graph */
-.container {
-    flex: 1; /* Ensures that content takes up remaining space */
-}
-
-/* Form styling */
-form {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 20px auto;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 1s ease-out;
+        position: sticky; /* or fixed */
+        top: 0; /* sticks to the top of the viewport */
+        z-index: 1000; /* ensures it stays above other content */
+        width: 100%; /* make it full width */
+
+    
+}
+
+.navbar h1 {
+    font-size: 2em;
+    margin-left: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #b7e4c7;
+    transform: scale(1.05);
+}
+
+/* Main content styling */
+.main-content {
+    width: 100%;
+    max-width: 900px; /* Increased max width */
+    margin-top: 2em;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Form and input styles */
+form {
+    background-color: white;
     padding: 20px;
-    background-color: #ffffffa9;
-    box-shadow: 0 0 10px rgb(0, 102, 82);
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
 }
 
-label, input, button {
-    margin-bottom: 10px;
+form:hover {
+    transform: translateY(-5px);
 }
 
-button {
+form label, form input {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 400px;
+}
+
+form input {
     padding: 10px;
-    background-color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    padding: 12px 20px;
+    background-color: #52b788;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-
-
-button:hover {
-    background-color: #218838;
+button[type="submit"]:hover {
+    background-color: #74c69d;
 }
 
-/* Graph and display styles */
-#display, #graph-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+/* Graph section styling */
+#graph {
+    margin: 40px 0;
+    animation: fadeInUp 2s ease;
 }
 
 canvas {
-    max-width: 100%;
+    max-width: 100%; /* Increase to fill space */
+    height: 450px;   /* Set fixed height */
 }
 
-/* Footer styling */
-footer {
-    background-color: #000000;
+/* Display section styling */
+#display div {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#display div:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    color: #2d6a4f;
+    font-size: 1.8em;
+}
+
+/* Button animations */
+#clear-data button {
+    padding: 12px 20px;
+    background-color: #e63946;
     color: white;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.9em;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#clear-data button:hover {
+    background-color: #f75c67;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
